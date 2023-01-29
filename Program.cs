@@ -35,8 +35,20 @@ string [] NewArray(int newsize, string [] array)
     return newarr;
 }
 
-Console.Write("Введите размер массива:");
+void PrintArray(string [] array)
+{
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.Write($"{array[i]}; ");
+    }
+}
+
+Console.Write("Введите размер массива: ");
 int size = Convert.ToInt32(Console.ReadLine());
+Console.Clear();
 string [] array = Array(size);
 int newsize = NewSizeArray(array);
 string [] newarray = NewArray(newsize, array);
+PrintArray(array);
+Console.WriteLine();
+PrintArray(newarray);
