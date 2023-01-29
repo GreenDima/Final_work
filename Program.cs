@@ -21,7 +21,22 @@ int NewSizeArray(string [] array)
     return size;
 }
 
+string [] NewArray(int newsize, string [] array)
+{
+    string [] newarr = new string[newsize];
+    for (int i = 0, j = 0; i < array.Length; i++)
+    {
+        if(array[i].Length < 4)
+        {
+            newarr[j] = array[i];
+            j++;
+        }
+    }
+    return newarr;
+}
+
 Console.Write("Введите размер массива:");
 int size = Convert.ToInt32(Console.ReadLine());
 string [] array = Array(size);
 int newsize = NewSizeArray(array);
+string [] newarray = NewArray(newsize, array);
