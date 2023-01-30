@@ -1,4 +1,16 @@
-﻿string [] Array(int size)
+﻿int CheckingInput()
+{
+    string? number = Console.ReadLine();
+    int size;
+    if(int.TryParse(number, out size) && size > 0) return size;
+    else
+    {
+        Console.Clear();
+        Console.Write("Ошибка ввода. Введите положительное число: ");
+        return CheckingInput();
+    }
+}
+string [] CreatArray(int size)
 {
     string [] arr = new string[size];
     Console.WriteLine($"Введите {size} слов(а): ");
@@ -21,7 +33,7 @@ int NewSizeArray(string [] array)
     return size;
 }
 
-string [] NewArray(int newsize, string [] array)
+string [] CreatNewArray(int newsize, string [] array)
 {
     string [] newarr = new string[newsize];
     for (int i = 0, j = 0; i < array.Length; i++)
@@ -44,11 +56,11 @@ void PrintArray(string [] array)
 }
 
 Console.Write("Введите размер массива: ");
-int size = Convert.ToInt32(Console.ReadLine());
+int size = CheckingInput();
 Console.Clear();
-string [] array = Array(size);
+string [] array = CreatArray(size);
 int newsize = NewSizeArray(array);
-string [] newarray = NewArray(newsize, array);
+string [] newarray = CreatNewArray(newsize, array);
 PrintArray(array);
 Console.WriteLine();
 PrintArray(newarray);
